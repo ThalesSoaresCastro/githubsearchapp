@@ -1,28 +1,26 @@
-import React from 'react';
-import { View } from 'react-native';
+import React,{memo} from 'react';
+
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import { 
     Container,
     ViewIcon,
-    ImageIcon,
 } from './styles';
 
-type Props = {
-    children: React.ReactNode;
-}
-
-// o icone deve ser do github da lib font-awesome
-const githubIcon ='../../images/Octocat.png'; 
-
-const HeaderComponent: React.FC<Props> = ({children}) => {
+const HeaderComponent: React.FC = () => {
   return(
       <Container>
           <ViewIcon>
-            <ImageIcon source={require(githubIcon)} />
+            <FontAwesomeIcon 
+              icon={faGithub} 
+              size={150} 
+              color={"white"}
+            />
           </ViewIcon>
-          {children}
       </Container>
   );
 }
 
-export default HeaderComponent;
+export default memo(HeaderComponent);

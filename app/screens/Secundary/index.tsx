@@ -1,10 +1,12 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import InfoComponent from '../../components/InfoComponent';
 
 // import { Container } from './styles';
 
 const Secundary: React.FC = () => {
   return(
+    <InfoComponent>
       <View
         style={{
             flex:1,
@@ -16,6 +18,7 @@ const Secundary: React.FC = () => {
               Secundaria
           </Text>
       </View>
+    </InfoComponent>
   );
 }
 

@@ -4,22 +4,16 @@ import theme from '../../../theme.json';
 
 
 export const Container = styled.View`
-    flex:1;
     flex-direction: column;
-    background:${theme.colors['black-head']};
+    height:30%;
+    padding-top:10%;
+    padding-right:5%;
 `;
 
 export const ViewIcon = styled.View`
     flex-direction: row-reverse;
-    height: 20%;
+    height: 100%;
     width: 100%;
-    background: red;
-    padding: 2%;
+    background: transparent;
     align-items: center;
-`;
-
-
-export const ImageIcon = styled.Image`
-    height: 80%;
-    width: 30%;
 `;
