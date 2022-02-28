@@ -5,9 +5,10 @@ import theme from '../../../theme.json';
 
 export const Container = styled.View`
     flex-direction: column;
-    height:30%;
+    height:32%;
     padding-top:10%;
     padding-right:5%;
+    background:${theme.colors['black-head']};
 `;
 
 export const ViewIcon = styled.View`

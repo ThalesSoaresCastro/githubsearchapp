@@ -9,6 +9,8 @@ import {
     ViewIcon,
 } from './styles';
 
+import theme from '../../../theme.json';
+
 const HeaderComponent: React.FC = () => {
   return(
       <Container>
@@ -16,7 +18,7 @@ const HeaderComponent: React.FC = () => {
             <FontAwesomeIcon 
               icon={faGithub} 
               size={150} 
-              color={"white"}
+              color={theme.colors['color-describe']}
             />
           </ViewIcon>
       </Container>

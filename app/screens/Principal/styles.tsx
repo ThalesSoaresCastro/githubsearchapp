@@ -37,5 +37,10 @@ export const ButtonSearch = styled.TouchableOpacity`
 
 
 
+export const ViewList = styled.SafeAreaView`
+    flex:1;
+    background:transparent;
+    width:100%;
+`;
 
 

@@ -8,6 +8,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Principal from '../../screens/Principal';
 import Secundary from '../../screens/Secundary';
 
+import RepoListScreen from '../../screens/RepoListScreen';
+
 const Tab = createBottomTabNavigator();
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -30,9 +32,8 @@ const Navigator: React.FC = () => {
         tabBarStyle: {
           backgroundColor: `${theme.colors['tab-bar']}`,
         },
-      
       }}
-      
+
       >
           <Tab.Screen 
             name="Principal" 
@@ -72,6 +73,7 @@ const Navigator: React.FC = () => {
               ),
             }}
           />
+
       </Tab.Navigator>
     </>
   );
