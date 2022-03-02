@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import InfoComponent from '../../components/InfoComponent';
 
 import { ButtonSearch, Container, SearchUser, ViewList } from './styles';
@@ -15,8 +15,6 @@ import EmptyListComponent from '../../components/EmptyListComponent';
 import { FlatList } from 'react-native';
 import UserItemComponent from '../../components/UserItemComponent';
 import { TextListView } from '../../components/UserItemComponent/styles';
-import UserContext from '../../contexts/UserContext';
-
 
 type TUser = {
     id: number;
@@ -43,7 +41,6 @@ const Principal: React.FC = () => {
     const[listUser, SetListUser] = useState<Array<TUser> | []>([]);
 
 
-    const {user} = useContext(UserContext);
 
 
     useEffect(()=>{

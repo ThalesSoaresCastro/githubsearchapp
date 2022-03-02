@@ -26,13 +26,19 @@ export const ViewList = styled.SafeAreaView`
     width:100%;
 `;
 
-
-
 export const ContainerButton = styled.TouchableOpacity`
-    
     padding: 2px;
-    
     align-items: center;
     background: transparent;
+    height:40px;
+    width: 40px;
+    justify-content:center;
 
+`;
+
+
+export const ViewButton = styled.View`
+    width: 100%;
+    flex-direction: row-reverse;
+    padding: 15px 35px 15px 25px;
 `;
