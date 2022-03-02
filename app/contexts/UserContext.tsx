@@ -5,6 +5,8 @@ import React,{
 } from "react";
 
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 type TUser = {
     id: number;
     login: string;
@@ -32,15 +34,51 @@ export const UserProvider: React.FC = ({children}) =>{
     const[listUser, SetLUser] = useState<Array<TUser> | []>([]);
 
     
+    useEffect(()=>{
+        getStorage()
+    },[]);
+
+    useEffect(()=>{
+        Storage()
+    },[listUser]);
+
+
+    async function Storage() {
+        try{
+            if(listUser && listUser.length > 0){
+                await AsyncStorage.setItem('@storage_users', JSON.stringify(listUser));
+            }
+        }catch(e){
+            console.log('error: ',e);
+        }
+    }
+
+    async function getStorage() {
+        try{
+            const SLUser = await AsyncStorage.getItem('@storage_users');
+            if(SLUser !== null){
+                SetLUser(JSON.parse(SLUser));
+            }
+        }catch(e){
+            console.log('Get Storage Error: ', e);
+        }
+    }
+
+    async function mergeStorage(){
+        try{
+            await AsyncStorage.mergeItem('@storage_users', JSON.stringify(listUser));
+        }catch(e){
+            console.log('Merge Storage Error: ', e);
+        }
+    }
+
+
+
     const validateUser = async(new_user: TUser)=>{
         if (listUser.length == 0) return false;
-        
-        
         let listU = listUser.filter((item:TUser) => item.id === new_user.id)
-        
         return listU.length > 0? true : false; 
     };
-
 
     async function AddUser(new_user: TUser){
         if(!new_user) return false;
