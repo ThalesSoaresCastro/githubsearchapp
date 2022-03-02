@@ -13,16 +13,11 @@ import { faAngleRight} from '@fortawesome/free-solid-svg-icons';
 
 import theme from '../../../theme.json';
 
-
 import { useNavigation } from '@react-navigation/native';
 
-
 const Secundary: React.FC = () => {
-
   const navigation = useNavigation();
-
   const {listUser} = useContext(UserContext);
-
   const [listI, SetListI] = useState([]);
 
   useEffect(()=>{

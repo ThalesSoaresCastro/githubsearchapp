@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 import theme from '../../../theme.json';
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.View`
     padding: 15px 35px 15px 35px;
     justify-content: space-between;
     align-items: center;
@@ -41,13 +41,21 @@ export const TextListView = styled.Text`
 `;
 
 
-export const ContainerButton = styled.TouchableOpacity`
-    
-    padding: 2px;
-    
-    align-items: center;
+export const ContainerButton = styled.View`
     background: transparent;
+    flex-direction: row-reverse;
+    align-items: center;
+`;
 
+
+export const TouchButton = styled.TouchableOpacity`
+    padding: 2px;
+    height: 50px;
+    width: 50px;
+    align-items: center;
+    justify-content:center;
+    background: transparent;
+    margin-left:4px;
 `;
 
 

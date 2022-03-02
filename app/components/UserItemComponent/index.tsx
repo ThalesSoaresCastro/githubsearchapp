@@ -5,7 +5,8 @@ import {
     ContainerButton,
     ImageContainer, 
     ImageUser, 
-    NameUser 
+    NameUser,
+    TouchButton,
 } from './styles';
 
 
@@ -14,7 +15,7 @@ import { useNavigation } from '@react-navigation/native';
 import theme from '../../../theme.json';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faAngleRight, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
 import UserContext from '../../contexts/UserContext';
 
 type TUser = {
@@ -39,10 +40,6 @@ const UserItemComponent: React.FC<Props> = ({user,removeItem}) => {
 
     return(
     <Container
-        onPress={()=>{
-            SetUser(user);
-            navigation.navigate("RepoListScreen");
-        }}
     >
         <ImageContainer>
             <ImageUser source={{uri:user.avatar_url}} />
@@ -52,22 +49,46 @@ const UserItemComponent: React.FC<Props> = ({user,removeItem}) => {
         </ImageContainer>
         
         { removeItem?
-            <ContainerButton
-                onPress={ async()=>{
-                    await RemoveUser(user);
-                }}
+            <ContainerButton>            
+                <TouchButton
+                    onPress={ async()=>{
+                        await RemoveUser(user);
+                    }}
+                >
+                    <FontAwesomeIcon 
+                        icon={faTrash} 
+                        color={'red'} 
+                        size={25}      
+                    />
+                </TouchButton>
+                <TouchButton
+                    onPress={()=>{
+                        SetUser(user);
+                        return navigation.navigate("RepoListScreen");
+                    }}
+                >
+                    <FontAwesomeIcon 
+                        icon={faEye} 
+                        color={'green'} 
+                        size={25}      
+                    />
+                </TouchButton>
+
+            </ContainerButton>
+            :
+            <TouchButton
+            onPress={()=>{
+                SetUser(user);
+                navigation.navigate("RepoListScreen");
+            }}
             >
                 <FontAwesomeIcon 
-                icon={faTrash} 
-                color={'red'} 
-                size={25}      
-            />
-            </ContainerButton>:
-            <FontAwesomeIcon 
-                icon={faAngleRight} 
-                color={theme.colors['color-describe']} 
-                size={15} 
-            />
+                    icon={faAngleRight} 
+                    color={theme.colors['color-describe']} 
+                    size={15} 
+                />
+            </TouchButton>
+
         }
     </Container>
   );
