@@ -40,9 +40,6 @@ const Principal: React.FC = () => {
 
     const[listUser, SetListUser] = useState<Array<TUser> | []>([]);
 
-
-
-
     useEffect(()=>{
         async function setMessage(): Promise<void> {
             if(error){

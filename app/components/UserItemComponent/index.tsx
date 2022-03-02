@@ -30,11 +30,14 @@ type Props = {
     removeItem?:boolean;
 };
 
+type Nav = {
+    navigate: (value: string) => void;
+  }
 
 const UserItemComponent: React.FC<Props> = ({user,removeItem}) => {
 
     
-    const navigation = useNavigation();
+    const navigation = useNavigation<Nav>();
 
     const {SetUser, RemoveUser} = useContext(UserContext);
 
