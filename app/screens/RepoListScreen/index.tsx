@@ -4,20 +4,23 @@ import InfoComponent from '../../components/InfoComponent';
 import UserContext from '../../contexts/UserContext';
 import { UserContainer, TextMessage, BackgroundHeart, ViewList } from './styles';
 
-// import { Container } from './styles';
-
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import GithubApi from '../../services/GithubApi';
 import EmptyListComponent from '../../components/EmptyListComponent';
 import RepoItemComponent from '../../components/RepoItemComponent';
 
+import MessageComponent from '../../components/MessageComponent';
+
 const RepoListScreen: React.FC = () => {
 
   const [repoListUser, SetRepoListUser] = useState([]);
-  const[error, SetError] = useState(false);
+  const{user, AddUser} = useContext(UserContext);
 
-  const{user, listUser, AddUser} = useContext(UserContext);
+
+  const[error, SetError] = useState(false);
+  const[message, SetMessage] = useState('');
+  const[typeError, SetTypeError] = useState(null);
 
   useEffect(()=>{
       async function SetRepo() {
@@ -26,16 +29,25 @@ const RepoListScreen: React.FC = () => {
           return SetError(true);
         }
         SetRepoListUser(response);
-
-        //console.log('listUser: ', listUser);
-
       }
       SetRepo();
   },[]);
 
-  //console.log('LISTA: ',repoListUser.length);
+
+  useEffect(()=>{
+      async function setMessage(): Promise<void> {
+          if(error){
+              setTimeout(() => {
+                  SetError(!error);
+              }, 2000);
+        }
+      }
+      setMessage();
+  },[error]);
 
   return(
+    <>
+      {error && <MessageComponent message={message} type={typeError} />}
       <InfoComponent>
           <UserContainer>
             <TextMessage>
@@ -43,9 +55,18 @@ const RepoListScreen: React.FC = () => {
             </TextMessage>
             <BackgroundHeart
               onPress={async()=>{
-                //console.log('userRepo: ', user)
 
-                await AddUser(user);
+                if(await AddUser(user)){
+                  SetError(!error);
+                  SetMessage('Usuário adicionado!');
+                  SetTypeError(true);
+                }
+                else{                  
+                  SetError(!error);
+                  SetMessage('Usuário já existe!');
+                  SetTypeError(false);
+                }
+                
               }}
             >  
               <FontAwesomeIcon 
@@ -72,6 +93,9 @@ const RepoListScreen: React.FC = () => {
           </ViewList>
 
       </InfoComponent>
+
+    
+    </>
   );
 }
 

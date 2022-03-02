@@ -46,8 +46,6 @@ const Secundary: React.FC = () => {
             data={listI}
             keyExtractor={item => item.id.toString() }
             renderItem={({item, index})=>{
-
-              {console.log(item, index, listI.length-1)}
               return(
                 index === listI.length-1?
                 <>

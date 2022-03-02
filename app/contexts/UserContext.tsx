@@ -17,7 +17,7 @@ type UserType = {
     user: TUser | null;
     listUser: TUser[] | [];
     SetUser: (user:TUser | null ) => Promise<void>;
-    AddUser: (listU: Array<TUser> | any ) => Promise<void>;
+    AddUser: (listU: Array<TUser> | any ) => Promise<boolean>;
     RemoveUser: (listU: Array<TUser> | any ) => Promise<void>;
 
 };
@@ -38,16 +38,17 @@ export const UserProvider: React.FC = ({children}) =>{
         
         let listU = listUser.filter((item:TUser) => item.id === new_user.id)
         
-        return listU.length > 0? true : false ; 
+        return listU.length > 0? true : false; 
     };
 
 
     async function AddUser(new_user: TUser){
-        if(!new_user) return;
+        if(!new_user) return false;
 
-        if( await validateUser(new_user)) return;
+        if( await validateUser(new_user)) return false;
         
         SetLUser([...listUser, new_user]);
+        return true;
            
     }
 

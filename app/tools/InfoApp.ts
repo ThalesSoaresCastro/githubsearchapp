@@ -27,3 +27,9 @@ const ValidateNet = () =>{
 }
 
 export default ValidateNet;
+
+
+
+export const ValidateUniqueUser = async(listUser, user)=>{
+    return listUser.filter((item) => item.id === user.id).length > 0 ? true : false;
+}
