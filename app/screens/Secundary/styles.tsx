@@ -25,3 +25,14 @@ export const ViewList = styled.SafeAreaView`
     background:transparent;
     width:100%;
 `;
+
+
+
+export const ContainerButton = styled.TouchableOpacity`
+    
+    padding: 2px;
+    
+    align-items: center;
+    background: transparent;
+
+`;

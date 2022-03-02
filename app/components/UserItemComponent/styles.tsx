@@ -4,16 +4,11 @@ import styled from 'styled-components/native';
 import theme from '../../../theme.json';
 
 export const Container = styled.TouchableOpacity`
-    flex:1;
-    height:60%;
-    width:100%;
     padding: 15px 35px 15px 35px;
-    
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
     background: transparent;
-
 `;
 
 export const ImageContainer = styled.View`

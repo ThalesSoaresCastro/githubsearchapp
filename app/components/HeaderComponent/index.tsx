@@ -1,4 +1,4 @@
-import React,{memo} from 'react';
+import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
@@ -25,4 +25,4 @@ const HeaderComponent: React.FC = () => {
   );
 }
 
-export default memo(HeaderComponent);
+export default HeaderComponent;

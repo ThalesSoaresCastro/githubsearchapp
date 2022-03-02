@@ -1,4 +1,4 @@
-import React, { useContext, useEffect} from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import { FlatList } from 'react-native';
 import EmptyListComponent from '../../components/EmptyListComponent';
 
@@ -6,11 +6,30 @@ import InfoComponent from '../../components/InfoComponent';
 import UserItemComponent from '../../components/UserItemComponent';
 import UserContext from '../../contexts/UserContext';
 
-import { Container, TextMessage,ViewList } from './styles';
+import { Container, ContainerButton, TextMessage,ViewList } from './styles';
+
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faAngleRight} from '@fortawesome/free-solid-svg-icons';
+
+
+import theme from '../../../theme.json';
 
 const Secundary: React.FC = () => {
 
   const {listUser} = useContext(UserContext);
+
+  const [listI, SetListI] = useState([]);
+
+  useEffect(()=>{
+    async function SetData() {
+      if(listUser){
+        SetListI(listUser);
+      }
+    }
+
+    SetData();
+  
+  },);
 
   return(
     <InfoComponent>
@@ -23,11 +42,13 @@ const Secundary: React.FC = () => {
 
     <ViewList>
       {
-        listUser.length === 0 ? <EmptyListComponent message={'Não existe usuários favoritos.'}/>
+        listI.length === 0 ? <EmptyListComponent message={'Não existe usuários favoritos.'}/>
         :
+        <>
         <FlatList
-          data={listUser}
-          renderItem={({item, index})=>{
+          data={listI}
+          keyExtractor={item => item.id.toString() }
+          renderItem={({item})=>{
             return <UserItemComponent 
                     user={{
                             login: item.login,
@@ -38,7 +59,18 @@ const Secundary: React.FC = () => {
                       removeItem={true}
                     />
           }}
+          style={{backgroundColor:'transparent'}}
         />
+
+        <ContainerButton>
+        <FontAwesomeIcon 
+                icon={faAngleRight} 
+                color={theme.colors['color-describe']} 
+                size={15} 
+            />
+        </ContainerButton>
+
+        </>
       }
     </ViewList>
 
