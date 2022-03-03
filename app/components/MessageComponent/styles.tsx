@@ -24,7 +24,6 @@ export const MessageView = styled.View<TypeMessage>`
     border-bottom-left-radius:${theme.border['border-message-radius']};
     
     border-color: ${props => props.tp ? theme.colors.isCheckedOk : theme.colors.isCheckedError};
-    
 `;
 
 export const MessageContainer = styled.View<TypeMessage>`

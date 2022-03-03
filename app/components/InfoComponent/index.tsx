@@ -1,9 +1,7 @@
 import React from 'react';
-import { View } from 'react-native';
 import HeaderComponent from '../HeaderComponent';
 
 import { Container, ViewInfo } from './styles';
-
 
 type Props = {
     children?: React.ReactNode;

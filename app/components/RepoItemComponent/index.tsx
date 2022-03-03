@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{memo} from 'react';
 
 import { Container, DescRepo, NameDescContainer, NameRepo } from './styles';
 
@@ -35,4 +35,4 @@ const RepoItemComponent: React.FC<Props> = ({repo}) => {
     );
 }
 
-export default RepoItemComponent;
+export default memo(RepoItemComponent);
