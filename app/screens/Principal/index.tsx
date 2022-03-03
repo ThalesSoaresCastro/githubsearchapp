@@ -121,6 +121,7 @@ const Principal: React.FC = () => {
                             </TextListView>
                             <FlatList 
                                 data={listUser}
+                                keyExtractor={item => item.id.toString() }
                                 renderItem={({item, index})=>{
                                     return <UserItemComponent 
                                             user={{

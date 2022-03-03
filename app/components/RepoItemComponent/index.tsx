@@ -19,7 +19,7 @@ type Props = {
 const RepoItemComponent: React.FC<Props> = ({repo}) => {
     return(
         <Container>
-            <FontAwesomeIcon icon={faFolder} color={theme.colors['dir-icon-color']} size={35} />
+            <FontAwesomeIcon icon={faFolder} color={theme.colors['dir-icon-color']} size={40} />
 
             <NameDescContainer>
                 <NameRepo>

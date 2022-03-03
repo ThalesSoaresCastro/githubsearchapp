@@ -84,6 +84,7 @@ const RepoListScreen: React.FC = () => {
               :
                 <FlatList 
                   data={repoListUser}
+                  keyExtractor={item => item.id.toString() }
                   renderItem={({item, index})=>{
                     return <RepoItemComponent repo={{  name:item.name, description: item.description}} />
                   }}

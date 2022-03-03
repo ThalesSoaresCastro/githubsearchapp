@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 
 import {
     Container,
@@ -97,4 +97,4 @@ const UserItemComponent: React.FC<Props> = ({user,removeItem}) => {
   );
 }
 
-export default UserItemComponent;
+export default memo(UserItemComponent);

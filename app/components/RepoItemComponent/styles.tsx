@@ -4,9 +4,6 @@ import styled from 'styled-components/native';
 import theme from '../../../theme.json';
 
 export const Container = styled.View`
-    flex:1;
-    height:60%;
-    width:100%;
     padding: 15px 35px 15px 35px;
 
     align-items: center;
